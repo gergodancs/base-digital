@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { SlideIn } from "./SlideIn";
 
 type PackageItem = {
   title: string;
@@ -19,12 +20,16 @@ export function Packages() {
   return (
     <section id="pakete" className="section packages" tabIndex={-1}>
       <div className="wrap">
-        <h2 className="section-title">{t("title")}</h2>
-        <p className="lede">{t("intro")}</p>
+        <SlideIn from="left">
+          <h2 className="section-title">{t("title")}</h2>
+          <p className="lede">{t("intro")}</p>
+        </SlideIn>
         <div className="package-grid">
-          {items.map((item) => (
-            <article
+          {items.map((item, index) => (
+            <SlideIn
+              as="article"
               className={item.featured ? "package is-featured" : "package"}
+              from={index % 2 === 0 ? "left" : "right"}
               key={item.title}
             >
               <h3>{item.title}</h3>
@@ -41,7 +46,7 @@ export function Packages() {
                   {item.cta}
                 </a>
               </div>
-            </article>
+            </SlideIn>
           ))}
         </div>
       </div>

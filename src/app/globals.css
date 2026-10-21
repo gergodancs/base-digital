@@ -18,10 +18,12 @@
 html {
   background: var(--cream);
   scroll-padding-top: calc(var(--header) + 0.75rem);
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   min-height: 100vh;
   color: var(--ink);
   background-color: var(--cream);
@@ -758,6 +760,13 @@ button {
   .btn-small { padding: 0.52rem 0.65rem; font-size: 0.74rem; }
   .menu-toggle { letter-spacing: 0.08em; }
   .lang { letter-spacing: 0.08em; }
+}
+
+@media (min-width: 768px), (prefers-reduced-motion: reduce) {
+  .m-slide {
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
